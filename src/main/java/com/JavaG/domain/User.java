@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private String userName;//用户名
-    private String userPwd;//密码
-    private String userType;//权限wode
+    private String userName;   //用户名
+    private String userPwd;    //密码
+    private Integer userType;  //权限
 
     public String getUserName() {
         return userName;
@@ -24,11 +24,11 @@ public class User implements Serializable {
         this.userPwd = userPwd;
     }
 
-    public String getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 }

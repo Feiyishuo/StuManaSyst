@@ -1,29 +1,30 @@
 package com.JavaG.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Student implements Serializable {
 
-    private String sNum;        //学号
+    private Integer sNum;       //学号
     private String sName;       //姓名
     private String sSex;        //性别
     private String sEthnic;     //民族
     private String sHome;       //籍贯
-    private String sYear;       //入学年份
+    private Date sYear;         //入学年份
     private String sMajor;      //专业
     private String sCollege;    //学院
-    private String sBirth;      //出生日期
+    private Date sBirth;        //出生日期
     private String sID;         //身份证号
     private String sPhone;      //电话
     private String sAddress;    //住址
     private String sInstructor; //辅导员
 
 
-    public String getsNum() {
+    public Integer getsNum() {
         return sNum;
     }
 
-    public void setsNum(String sNum) {
+    public void setsNum(Integer sNum) {
         this.sNum = sNum;
     }
 
@@ -59,11 +60,11 @@ public class Student implements Serializable {
         this.sHome = sHome;
     }
 
-    public String getsYear() {
+    public Date getsYear() {
         return sYear;
     }
 
-    public void setsYear(String sYear) {
+    public void setsYear(Date sYear) {
         this.sYear = sYear;
     }
 
@@ -83,11 +84,11 @@ public class Student implements Serializable {
         this.sCollege = sCollege;
     }
 
-    public String getsBirth() {
+    public Date getsBirth() {
         return sBirth;
     }
 
-    public void setsBirth(String sBirth) {
+    public void setsBirth(Date sBirth) {
         this.sBirth = sBirth;
     }
 

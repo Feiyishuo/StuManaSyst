@@ -4,31 +4,31 @@ import java.io.Serializable;
 
 public class SC implements Serializable {
 
-    private String sNum;   //学号
-    private String cNum;   //课程编码
-    private String grade;  //成绩
+    private Integer sNum;   //学号
+    private Integer cNum;   //课程编码
+    private Integer grade;  //成绩
 
-    public String getsNum() {
+    public Integer getsNum() {
         return sNum;
     }
 
-    public void setsNum(String sNum) {
+    public void setsNum(Integer sNum) {
         this.sNum = sNum;
     }
 
-    public String getcNum() {
+    public Integer getcNum() {
         return cNum;
     }
 
-    public void setcNum(String cNum) {
+    public void setcNum(Integer cNum) {
         this.cNum = cNum;
     }
 
-    public String getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 }

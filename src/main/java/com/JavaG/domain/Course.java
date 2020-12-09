@@ -5,18 +5,18 @@ import java.io.Serializable;
 public class Course implements Serializable {
 
 
-    private String cNum;       //课程编码
+    private Integer cNum;      //课程编码
     private String cName;      //课程名称
     private String cTeacher;   //授课教师
     private String cPlace;     //上课地点
     private String cTime;      //上课时间
     private String cType;      //课程类型
 
-    public String getcNum() {
+    public Integer getcNum() {
         return cNum;
     }
 
-    public void setcNum(String cNum) {
+    public void setcNum(Integer cNum) {
         this.cNum = cNum;
     }
 
