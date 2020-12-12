@@ -6,10 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,20 +16,20 @@ import java.util.List;
 /**
  * 帐户web
  */
-@Controller
-@RequestMapping("/account")
+@RestController
+@RequestMapping("/api/account")
 public class AccountController {
 
     @Autowired
     private AccountService accountService;
 
     @RequestMapping("/findAll")
-    public void findAll(Model model){
+    public List<Account> findAll(){
         System.out.println("表现层：查询所有账户...");
         // 调用service的方法
         List<Account> list = accountService.findAll();//gugiu
-        model.addAttribute("list",list);
-        return;
+
+        return list;
     }
 
         /**
