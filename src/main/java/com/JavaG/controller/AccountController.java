@@ -30,7 +30,7 @@ public class AccountController {
     public void findAll(Model model){
         System.out.println("表现层：查询所有账户...");
         // 调用service的方法
-        List<Account> list = accountService.findAll();
+        List<Account> list = accountService.findAll();//gugiu
         model.addAttribute("list",list);
         return;
     }
