@@ -4,59 +4,14 @@ import java.io.Serializable;
 
 public class Course implements Serializable {
 
+    private Integer id;//课程id
+    private String name;//课程名称
+    private Double credit;//学分
+    private Integer status;//课程性质1必修0选修
+    private Integer period;//课时
+    private String time;//上课时间
+    private String place;//上课地点
 
-    private Integer cNum;      //课程编码
-    private String cName;      //课程名称
-    private String cTeacher;   //授课教师
-    private String cPlace;     //上课地点
-    private String cTime;      //上课时间
-    private String cType;      //课程类型
 
-    public Integer getcNum() {
-        return cNum;
-    }
 
-    public void setcNum(Integer cNum) {
-        this.cNum = cNum;
-    }
-
-    public String getcName() {
-        return cName;
-    }
-
-    public void setcName(String cName) {
-        this.cName = cName;
-    }
-
-    public String getcTeacher() {
-        return cTeacher;
-    }
-
-    public void setcTeacher(String cTeacher) {
-        this.cTeacher = cTeacher;
-    }
-
-    public String getcPlace() {
-        return cPlace;
-    }
-
-    public void setcPlace(String cPlace) {
-        this.cPlace = cPlace;
-    }
-
-    public String getcTime() {
-        return cTime;
-    }
-
-    public void setcTime(String cTime) {
-        this.cTime = cTime;
-    }
-
-    public String getcType() {
-        return cType;
-    }
-
-    public void setcType(String cType) {
-        this.cType = cType;
-    }
 }
