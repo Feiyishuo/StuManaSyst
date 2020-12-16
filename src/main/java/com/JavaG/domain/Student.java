@@ -14,27 +14,32 @@ public class Student implements Serializable {
     private String politicsStatus;//政治面貌
     private String idCard;//身份证号
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date createTime;//入学时间
+    private Date birth;//出生日期
     private String phoneNum;//电话号码
-    private Integer age;//年龄
-    private Major major;//专业
-    private Academy academy;//学院
+    private Integer grade;//年级
+    private String majorId;//专业id
+    private String academyId;//学院id
+    private String nativePlace;//籍贯
 
 
-    public Student(String id, String name, String sex, String nation, String politicsStatus, String idCard, Date createTime, String phoneNum, Integer age, Major major, Academy academy) {
+    public Student(String id, String name, String sex, String nation, String politicsStatus, String idCard, Date birth, String phoneNum, Integer grade, String majorId, String academyId, String nativePlace) {
         this.id = id;
         this.name = name;
         this.sex = sex;
         this.nation = nation;
         this.politicsStatus = politicsStatus;
         this.idCard = idCard;
-        this.createTime = createTime;
+        this.birth = birth;
         this.phoneNum = phoneNum;
-        this.age = age;
-        this.major = major;
-        this.academy = academy;
+        this.grade = grade;
+        this.majorId = majorId;
+        this.academyId = academyId;
+        this.nativePlace = nativePlace;
     }
-
+    public Student(String id)
+    {
+        this.id=id;
+    }
 
     public String getId() {
         return id;
@@ -84,12 +89,12 @@ public class Student implements Serializable {
         this.idCard = idCard;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getBirth() {
+        return birth;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 
     public String getPhoneNum() {
@@ -100,30 +105,37 @@ public class Student implements Serializable {
         this.phoneNum = phoneNum;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getGrade() {
+        return grade;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
-    public Major getMajor() {
-        return major;
+    public String getMajorId() {
+        return majorId;
     }
 
-    public void setMajor(Major major) {
-        this.major = major;
+    public void setMajorId(String majorId) {
+        this.majorId = majorId;
     }
 
-    public Academy getAcademy() {
-        return academy;
+    public String getAcademyId() {
+        return academyId;
     }
 
-    public void setAcademy(Academy academy) {
-        this.academy = academy;
+    public void setAcademyId(String academyId) {
+        this.academyId = academyId;
     }
 
+    public String getNativePlace() {
+        return nativePlace;
+    }
+
+    public void setNativePlace(String nativePlace) {
+        this.nativePlace = nativePlace;
+    }
 
     @Override
     public String toString() {
@@ -134,11 +146,12 @@ public class Student implements Serializable {
                 ", nation='" + nation + '\'' +
                 ", politicsStatus='" + politicsStatus + '\'' +
                 ", idCard='" + idCard + '\'' +
-                ", createTime=" + createTime +
+                ", birth=" + birth +
                 ", phoneNum='" + phoneNum + '\'' +
-                ", age=" + age +
-                ", major=" + major +
-                ", academy=" + academy +
+                ", grade=" + grade +
+                ", majorId='" + majorId + '\'' +
+                ", academyId='" + academyId + '\'' +
+                ", nativePlace='" + nativePlace + '\'' +
                 '}';
     }
 }

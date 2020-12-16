@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ import java.util.List;
 public class StudentInfoController {
 
 
-    @Autowired
+    @Resource
     private StudentInfoService studentInfoService;
 
 
@@ -58,11 +59,12 @@ public class StudentInfoController {
 
     /**
      * 根据学生id获取学生详细信息
-     * @param id
+     * @param
      * @return
      */
-    @RequestMapping(value = "/findStudentDetailsById",method = {RequestMethod.GET})
+    @RequestMapping(value = "/findStudentDetailsById",method = {RequestMethod.POST})
     public @ResponseBody Student findStudentDetailsById(@RequestParam String id){
+
         return studentInfoService.findStudentDetailsById(id);
     }
 

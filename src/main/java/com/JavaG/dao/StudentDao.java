@@ -40,7 +40,7 @@ public interface StudentDao {
 
 
     //单条插入学生信息
-    @Insert("insert into student values(#{id},#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{major.majorId},#{academy.academyId},{createTime},#{phoneNum},#{age})")
+    @Insert("insert into student values(#{id},#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},{class},#{phoneNum},#{birth},#{nativePlace})")
     int insertOneStudentInfo(Student student);
 
 
@@ -54,7 +54,7 @@ public interface StudentDao {
 
 
     //更新学生信息
-    @Update("update student set name = #{name},sex = #{sex},nation = #{nation},politicsStatus = #{politicsStatus},idCard = #{idCard},majorId = #{major.majorId},academyId = #{academy.academyId},createTime = {createTime},phoneNum = #{phoneNum},age = #{age} where id = #{student.id}")
+    @Update("update student set name = #{name},sex = #{sex},nation = #{nation},politicsStatus = #{politicsStatus},idCard = #{idCard},majorId = #{majorId},academyId = #{academyId},class = {class},phoneNum = #{phoneNum},birth = #{birth},nativePlace=#{nativePlace} where id = #{student.id}")
     int updateStudentInfo(Student student);
 
 
