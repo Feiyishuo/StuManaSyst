@@ -17,12 +17,12 @@ public class Student implements Serializable {
     private Date birth;//出生日期
     private String phoneNum;//电话号码
     private Integer grade;//年级
-    private String majorId;//专业id
-    private String academyId;//学院id
+    private Integer majorId;//专业id
+    private Integer academyId;//学院id
     private String nativePlace;//籍贯
 
 
-    public Student(String id, String name, String sex, String nation, String politicsStatus, String idCard, Date birth, String phoneNum, Integer grade, String majorId, String academyId, String nativePlace) {
+    public Student(String id, String name, String sex, String nation, String politicsStatus, String idCard, Date birth, String phoneNum, Integer grade, Integer majorId, Integer academyId, String nativePlace) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -35,10 +35,6 @@ public class Student implements Serializable {
         this.majorId = majorId;
         this.academyId = academyId;
         this.nativePlace = nativePlace;
-    }
-    public Student(String id)
-    {
-        this.id=id;
     }
 
     public String getId() {
@@ -113,19 +109,19 @@ public class Student implements Serializable {
         this.grade = grade;
     }
 
-    public String getMajorId() {
+    public Integer getMajorId() {
         return majorId;
     }
 
-    public void setMajorId(String majorId) {
+    public void setMajorId(Integer majorId) {
         this.majorId = majorId;
     }
 
-    public String getAcademyId() {
+    public Integer getAcademyId() {
         return academyId;
     }
 
-    public void setAcademyId(String academyId) {
+    public void setAcademyId(Integer academyId) {
         this.academyId = academyId;
     }
 
@@ -149,8 +145,8 @@ public class Student implements Serializable {
                 ", birth=" + birth +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", grade=" + grade +
-                ", majorId='" + majorId + '\'' +
-                ", academyId='" + academyId + '\'' +
+                ", majorId=" + majorId +
+                ", academyId=" + academyId +
                 ", nativePlace='" + nativePlace + '\'' +
                 '}';
     }

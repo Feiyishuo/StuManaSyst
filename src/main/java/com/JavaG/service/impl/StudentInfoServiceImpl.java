@@ -30,6 +30,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 
     @Override
     public Student findStudentDetailsById(String id) {
+        System.out.println("studentInfoImpl");
         return studentDao.findStudentDetailsById(id);
     }
 

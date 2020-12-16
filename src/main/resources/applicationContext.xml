@@ -57,6 +57,7 @@
         <property name="basePackage" value="com.JavaG.dao"/>
     </bean>
 
+
     <!--配置声明式事务管理-->
     <!--配置事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

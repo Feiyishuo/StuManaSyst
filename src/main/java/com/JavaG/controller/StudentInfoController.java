@@ -3,10 +3,13 @@ package com.JavaG.controller;
 
 import com.JavaG.domain.Student;
 import com.JavaG.service.StudentInfoService;
+import com.JavaG.service.impl.StudentInfoServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.ibatis.annotations.Param;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import java.io.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -40,6 +43,7 @@ public class StudentInfoController {
      */
     @RequestMapping(value = "/findStudentByMajorId",method = {RequestMethod.GET})
     public @ResponseBody List<Student> findStudentByMajorId(@RequestParam Integer majorId){
+
         return studentInfoService.findStudentByMajorId(majorId);
     }
 
@@ -63,9 +67,13 @@ public class StudentInfoController {
      * @return
      */
     @RequestMapping(value = "/findStudentDetailsById",method = {RequestMethod.POST})
-    public @ResponseBody Student findStudentDetailsById(@RequestParam String id){
+    public  String findStudentDetailsById(@RequestBody String sid){
+        System.out.println("studentInfoController");
+        JSONObject object = new JSONObject();
+        Student student=studentInfoService.findStudentDetailsById(sid);
+        object.put("student", student);
 
-        return studentInfoService.findStudentDetailsById(id);
+        return object.toString();
     }
 
 
