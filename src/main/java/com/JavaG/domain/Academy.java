@@ -6,6 +6,7 @@ import java.util.List;
 public class Academy implements Serializable {
 
     private Integer id;//学院id
+
     private String name;//学院名称
 
     public Integer getId() {

@@ -12,6 +12,73 @@ public class Course implements Serializable {
     private String time;//上课时间
     private String place;//上课地点
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Double credit) {
+        this.credit = credit;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Integer period) {
+        this.period = period;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    @Override
+    public String toString(){
+    return "Course{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", credit=" + credit  + '\'' +
+            ", status=" + status  + '\'' +
+            ", period=" + period  + '\'' +
+            ", time=" + time  + '\'' +
+            ", place=" + place  + '\'' +
+            '}';
+}
 
 }
