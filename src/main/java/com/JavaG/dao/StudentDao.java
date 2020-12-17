@@ -2,32 +2,30 @@ package com.JavaG.dao;
 
 
 import com.JavaG.domain.Student;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-@Repository
+@MapperScan
 public interface StudentDao {
 
 
 
     //查询所有
-    @Select("select * from student")
+//    @Select("select * from student")
     List<Student> findAll();
 
 
     //根据专业id获取学生信息
-    @Select("select * from student where majorId = #{majorId}")
+//    @Select("select * from student where majorId = #{majorId}")
     List<Student> findStudentByMajorId(Integer majorId);
 
 
 
     //根据学院id获取学生信息
-    @Select("select * from student where academyId = #{academyId}")
+//    @Select("select * from student where academyId = #{academyId}")
     List<Student> findStudentByAcademyId(Integer academyId);
 
 
@@ -35,7 +33,7 @@ public interface StudentDao {
 
 
     //根据学生id获取学生详细信息
-    @Select("select * from student where id = #{id}")
+//    @Select("select * from student where id = #{id}")
     Student findStudentDetailsById(String id);
 
 
