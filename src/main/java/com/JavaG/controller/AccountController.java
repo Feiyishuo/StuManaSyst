@@ -28,7 +28,9 @@ public class AccountController {
         System.out.println("表现层：查询所有账户...");
         // 调用service的方法
         List<Account> list = accountService.findAll();//gugiu
-
+        for(Account account:list){
+            System.out.println(account);
+        }
         return list;
     }
 

@@ -10,7 +10,7 @@ public interface StudentInfoService {
      * 查找所有
      * @return
      */
-    List<Student> findAll();
+    public List<Student> findAll();
 
 
     /**

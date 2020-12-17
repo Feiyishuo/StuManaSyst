@@ -5,17 +5,23 @@ import com.JavaG.domain.Student;
 import com.JavaG.service.StudentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.util.List;
 
-@Service("studentInfoService")
+@Service()
 public class StudentInfoServiceImpl implements StudentInfoService {
 
-    @Autowired
+    @Resource
     private StudentDao studentDao;
 
-    @Override
+
     public List<Student> findAll() {
-        return studentDao.findAll();
+
+        System.out.println("业务层：查询所有学生1...");
+        List<Student> list=studentDao.findAll();
+        System.out.println("业务层：查询所有学生2...");
+        return list;
     }
 
     @Override

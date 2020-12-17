@@ -1,6 +1,7 @@
 package com.JavaG.controller;
 
 
+import com.JavaG.domain.Account;
 import com.JavaG.domain.Student;
 import com.JavaG.service.StudentInfoService;
 import com.JavaG.service.impl.StudentInfoServiceImpl;
@@ -17,11 +18,12 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/studentInfo")
+@RequestMapping(value = "/api/studentInfo",produces = {"application/json;charset=UTF-8"})
+//@RequestMapping(value=“xxx”,produces = {“application/json;charset=UTF-8”})
 public class StudentInfoController {
 
 
-    @Resource
+    @Autowired
     private StudentInfoService studentInfoService;
 
 
@@ -30,9 +32,14 @@ public class StudentInfoController {
      * 查找所有
      * @return
      */
-    @RequestMapping(value = "/findAll",method = {RequestMethod.GET})
-    public @ResponseBody List<Student> findAll(){
-        return studentInfoService.findAll();
+    @RequestMapping("/findAll")
+    public List<Student> findAll(){
+        System.out.println("表现层：查询所有学生...");
+        List<Student> list = studentInfoService.findAll();
+        for(Student student:list){
+            System.out.println(student);
+        }
+        return list;
     }
 
 
@@ -66,13 +73,16 @@ public class StudentInfoController {
      * @param
      * @return
      */
+
     @RequestMapping(value = "/findStudentDetailsById",method = {RequestMethod.POST})
-    public  String findStudentDetailsById(@RequestBody String sid){
+    public  String findStudentDetailsById(@RequestBody Student student){
         System.out.println("studentInfoController");
         JSONObject object = new JSONObject();
-        Student student=studentInfoService.findStudentDetailsById(sid);
-        object.put("student", student);
+        String id=student.getId();
+        Student stu=studentInfoService.findStudentDetailsById(id);
+        object.put("student", stu);
 
+        System.out.println(stu);
         return object.toString();
     }
 

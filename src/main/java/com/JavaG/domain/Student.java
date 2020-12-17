@@ -22,20 +22,7 @@ public class Student implements Serializable {
     private String nativePlace;//籍贯
 
 
-    public Student(String id, String name, String sex, String nation, String politicsStatus, String idCard, Date birth, String phoneNum, Integer grade, Integer majorId, Integer academyId, String nativePlace) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.nation = nation;
-        this.politicsStatus = politicsStatus;
-        this.idCard = idCard;
-        this.birth = birth;
-        this.phoneNum = phoneNum;
-        this.grade = grade;
-        this.majorId = majorId;
-        this.academyId = academyId;
-        this.nativePlace = nativePlace;
-    }
+
 
     public String getId() {
         return id;

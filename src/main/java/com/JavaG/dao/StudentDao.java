@@ -8,14 +8,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-@MapperScan
+@Mapper
 public interface StudentDao {
 
 
 
     //查询所有
 //    @Select("select * from student")
-    List<Student> findAll();
+    public List<Student> findAll();
 
 
     //根据专业id获取学生信息
