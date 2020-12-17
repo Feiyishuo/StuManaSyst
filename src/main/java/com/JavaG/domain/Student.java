@@ -17,12 +17,26 @@ public class Student implements Serializable {
     private Date birth;//出生日期
     private String phoneNum;//电话号码
     private Integer grade;//年级
-    private Integer majorId;//专业id
-    private Integer academyId;//学院id
     private String nativePlace;//籍贯
+    private Major major;
+    private Academy academy;
 
 
+    public Major getMajor() {
+        return major;
+    }
 
+    public void setMajor(Major major) {
+        this.major = major;
+    }
+
+    public Academy getAcademy() {
+        return academy;
+    }
+
+    public void setAcademy(Academy academy) {
+        this.academy = academy;
+    }
 
     public String getId() {
         return id;
@@ -96,21 +110,7 @@ public class Student implements Serializable {
         this.grade = grade;
     }
 
-    public Integer getMajorId() {
-        return majorId;
-    }
 
-    public void setMajorId(Integer majorId) {
-        this.majorId = majorId;
-    }
-
-    public Integer getAcademyId() {
-        return academyId;
-    }
-
-    public void setAcademyId(Integer academyId) {
-        this.academyId = academyId;
-    }
 
     public String getNativePlace() {
         return nativePlace;
@@ -132,9 +132,9 @@ public class Student implements Serializable {
                 ", birth=" + birth +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", grade=" + grade +
-                ", majorId=" + majorId +
-                ", academyId=" + academyId +
                 ", nativePlace='" + nativePlace + '\'' +
+                ", major=" + major +
+                ", academy=" + academy +
                 '}';
     }
 }

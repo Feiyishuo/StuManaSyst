@@ -1,4 +1,5 @@
 //package com.JavaG.teat;
+//
 //import com.JavaG.dao.StudentDao;
 //import com.JavaG.domain.Student;
 //import org.apache.ibatis.io.Resources;
@@ -21,7 +22,7 @@
 //    @Before
 //    public void init() throws Exception{
 //        //1.读取配置文件
-//        in = Resources.getResourceAsStream("applicationContext.xml ");
+//        in = Resources.getResourceAsStream("SqlMapConfig.xml ");
 //        //2.创建SqlSessionFactory工厂
 //        factory = new SqlSessionFactoryBuilder().build(in);
 //        //3.使用工厂生产SqlSession对象

@@ -8,7 +8,27 @@ public class Academy implements Serializable {
     private Integer id;//学院id
     private String name;//学院名称
 
-    private List<Major> majors;//专业
+    public Integer getId() {
+        return id;
+    }
 
-    private List<Teacher> teachers;//老师
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Academy{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

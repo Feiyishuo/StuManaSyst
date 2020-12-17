@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/studentInfo",produces = {"application/json;charset=UTF-8"})
-//@RequestMapping(value=“xxx”,produces = {“application/json;charset=UTF-8”})
 public class StudentInfoController {
 
 
@@ -75,15 +74,15 @@ public class StudentInfoController {
      */
 
     @RequestMapping(value = "/findStudentDetailsById",method = {RequestMethod.POST})
-    public  String findStudentDetailsById(@RequestBody Student student){
+    public  Student findStudentDetailsById(@RequestBody Student student){
         System.out.println("studentInfoController");
-        JSONObject object = new JSONObject();
+//        JSONObject object = new JSONObject();
         String id=student.getId();
         Student stu=studentInfoService.findStudentDetailsById(id);
-        object.put("student", stu);
+//        object.put("student", stu);
 
         System.out.println(stu);
-        return object.toString();
+        return stu;
     }
 
 

@@ -3,8 +3,6 @@ package com.JavaG.dao;
 
 import com.JavaG.domain.Student;
 import org.apache.ibatis.annotations.*;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
@@ -38,21 +36,21 @@ public interface StudentDao {
 
 
     //单条插入学生信息
-    @Insert("insert into student values(#{id},#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},{class},#{phoneNum},#{birth},#{nativePlace})")
+//    @Insert("insert into student values(#{id},#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},{class},#{phoneNum},#{birth},#{nativePlace})")
     int insertOneStudentInfo(Student student);
 
 
 
 
     //根据id来删除学生信息
-    @Delete("delete from student where id = #{id}")
+//    @Delete("delete from student where id = #{id}")
     int deleteStudentInfo(String id);
 
 
 
 
     //更新学生信息
-    @Update("update student set name = #{name},sex = #{sex},nation = #{nation},politicsStatus = #{politicsStatus},idCard = #{idCard},majorId = #{majorId},academyId = #{academyId},class = {class},phoneNum = #{phoneNum},birth = #{birth},nativePlace=#{nativePlace} where id = #{student.id}")
+//    @Update("update student set name = #{name},sex = #{sex},nation = #{nation},politicsStatus = #{politicsStatus},idCard = #{idCard},majorId = #{majorId},academyId = #{academyId},class = {class},phoneNum = #{phoneNum},birth = #{birth},nativePlace=#{nativePlace} where id = #{student.id}")
     int updateStudentInfo(Student student);
 
 
