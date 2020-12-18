@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <typeAliases>
-        <typeAlias type="com.JavaG.dao.UserDao" alias="User" />
-    </typeAliases>
-    <mappers>
-        <mapper resource="com/xxt/ibatis/dbcp/domain/userMapper.xml" />
-    </mappers>
-</configuration>

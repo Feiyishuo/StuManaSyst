@@ -11,15 +11,6 @@ public class Course implements Serializable {
     private Integer period;//课时
     private String time;//上课时间
     private String place;//上课地点
-    private Teacher teacher;//教师Id
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
 
     public Integer getId() {
         return id;
@@ -78,16 +69,16 @@ public class Course implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", credit=" + credit +
-                ", status=" + status +
-                ", period=" + period +
-                ", time='" + time + '\'' +
-                ", place='" + place + '\'' +
-                ", teacher=" + teacher +
-                '}';
-    }
+    public String toString(){
+    return "Course{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", credit=" + credit  + '\'' +
+            ", status=" + status  + '\'' +
+            ", period=" + period  + '\'' +
+            ", time=" + time  + '\'' +
+            ", place=" + place  + '\'' +
+            '}';
+}
+
 }
