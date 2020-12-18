@@ -77,7 +77,7 @@ public class StudentInfoController {
     public  Student findStudentDetailsById(@RequestBody Student student){
         System.out.println("studentInfoController");
 //        JSONObject object = new JSONObject();
-        String id=student.getId();
+        Integer id=student.getId();
         Student stu=studentInfoService.findStudentDetailsById(id);
 //        object.put("student", stu);
 
@@ -92,16 +92,17 @@ public class StudentInfoController {
      * @return
      */
     @RequestMapping(value = "/insertOneStudentInfo",method = {RequestMethod.POST})
-    public void insertOneStudentInfo(@RequestBody Student student, HttpServletResponse response) throws IOException {
+    public Boolean insertOneStudentInfo(@RequestBody Student student)  {
 
-        int count = studentInfoService.insertOneStudentInfo(student);
-        HashMap<String, Integer> map = new HashMap<>();
-        if(count == 1){
-            map.put("code",1);
-        }else{
-            map.put("code",0);
-        }
-        response.getWriter().write(new ObjectMapper().writeValueAsString(map));
+        return studentInfoService.insertOneStudentInfo(student);
+
+//        HashMap<String, Integer> map = new HashMap<>();
+//        if(count == 1){
+//            map.put("code",1);
+//        }else{
+//            map.put("code",0);
+//        }
+//        response.getWriter().write(new ObjectMapper().writeValueAsString(map));
 
 
     }
@@ -114,9 +115,9 @@ public class StudentInfoController {
      */
     @RequestMapping(value = "/deleteStudentInfo",method = {RequestMethod.POST})
     public void deleteStudentInfo(@RequestBody Student student, HttpServletResponse response) throws IOException{
-        int count = studentInfoService.deleteStudentInfo(student.getId());
+        Boolean count = studentInfoService.deleteStudentInfo(student.getId());
         HashMap<String, Integer> map = new HashMap<>();
-        if(count == 1){
+        if(count){
             map.put("code",1);
         }else{
             map.put("code",0);

@@ -1,9 +1,10 @@
 package com.JavaG.service;
 
 import com.JavaG.domain.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface StudentInfoService {
 
     /**
@@ -36,7 +37,7 @@ public interface StudentInfoService {
      * @param id
      * @return
      */
-    Student findStudentDetailsById(String id);
+    Student findStudentDetailsById(Integer id);
 
 
     /**
@@ -44,7 +45,7 @@ public interface StudentInfoService {
      * @param student
      * @return
      */
-    int insertOneStudentInfo(Student student);
+    Boolean insertOneStudentInfo(Student student);
 
 
 
@@ -52,7 +53,7 @@ public interface StudentInfoService {
      * 根据id来删除学生信息
      * @param id
      */
-    int deleteStudentInfo(String id);
+    Boolean deleteStudentInfo(Integer id);
 
 
 
