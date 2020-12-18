@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Student implements Serializable {
 
-    private String id;//学工号
+    private Integer id;//学工号
     private String name;//姓名
     private String sex;//性别
     private String nation;//民族
@@ -20,7 +20,24 @@ public class Student implements Serializable {
     private String nativePlace;//籍贯
     private Major major;
     private Academy academy;
+    private Integer majorId;
+    private Integer academyId;
 
+    public Integer getMajorId() {
+        return majorId;
+    }
+
+    public void setMajorId(Integer majorId) {
+        this.majorId = majorId;
+    }
+
+    public Integer getAcademyId() {
+        return academyId;
+    }
+
+    public void setAcademyId(Integer academyId) {
+        this.academyId = academyId;
+    }
 
     public Major getMajor() {
         return major;
@@ -38,11 +55,11 @@ public class Student implements Serializable {
         this.academy = academy;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

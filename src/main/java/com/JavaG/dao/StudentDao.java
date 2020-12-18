@@ -32,19 +32,19 @@ public interface StudentDao {
 
     //根据学生id获取学生详细信息
 //    @Select("select * from student where id = #{id}")
-    Student findStudentDetailsById(String id);
+    Student findStudentDetailsById(Integer id);
 
 
     //单条插入学生信息
 //    @Insert("insert into student values(#{id},#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},{class},#{phoneNum},#{birth},#{nativePlace})")
-    int insertOneStudentInfo(Student student);
+    Boolean insertOneStudentInfo(Student student);
 
 
 
 
     //根据id来删除学生信息
 //    @Delete("delete from student where id = #{id}")
-    int deleteStudentInfo(String id);
+    Boolean deleteStudentInfo(Integer id);
 
 
 

@@ -19,9 +19,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     public List<Student> findAll() {
 
         System.out.println("业务层：查询所有学生1...");
-        List<Student> list=studentDao.findAll();
-        System.out.println("业务层：查询所有学生2...");
-        return list;
+        return studentDao.findAll();
     }
 
     @Override
@@ -35,30 +33,30 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     @Override
-    public Student findStudentDetailsById(String id) {
+    public Student findStudentDetailsById(Integer id) {
         System.out.println("studentInfoImpl");
         return studentDao.findStudentDetailsById(id);
     }
 
     @Override
-    public int insertOneStudentInfo(Student student) {
-        synchronized (this) {
-            while (true) {
-                if (studentDao.findStudentDetailsById(student.getId()) == null&student.getId()!=null&student.getName()!=null) {
+    public Boolean insertOneStudentInfo(Student student) {
 
-                    return studentDao.insertOneStudentInfo(student);
-                }
-
-            }
+        if (student.getName()!=null) {
+           return studentDao.insertOneStudentInfo(student);
         }
+        else {
+            return false;
+        }
+
     }
-
-
 
     @Override
-    public int deleteStudentInfo(String id) {
+    public Boolean deleteStudentInfo(Integer id) {
         return studentDao.deleteStudentInfo(id);
     }
+
+
+
 
     @Override
     public int updateStudentInfo(Student student) {
