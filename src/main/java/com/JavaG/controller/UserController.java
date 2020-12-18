@@ -67,10 +67,7 @@ public class UserController {
     //退出登录
     @RequestMapping(value = "/api/logout",method = RequestMethod.GET)
     public Response logout(HttpSession session){
-        User user=(User)session.getAttribute("USER_SESSION");
-        if(user==null){
-            return new Response().failure("请先登录！");
-        }
+       
         session.removeAttribute("USER_SESSION");
         return new Response().success();
     }
