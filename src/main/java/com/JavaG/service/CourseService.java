@@ -10,4 +10,7 @@ import java.util.List;
 public interface CourseService {
     List<Course> findAllCourseByStudentId(int id);
     Boolean deleteStudentCourse(SC sc);
+    Boolean createCourse(Course course);
+    Boolean selectCourse(SC sc);
+    List<Course> findAllCourse();
 }

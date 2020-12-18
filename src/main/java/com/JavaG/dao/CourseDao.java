@@ -14,4 +14,7 @@ public interface CourseDao {
 
     List<Course> findAllCourseByStudentId(int id);
     Boolean deleteStudentCourse(SC sc);
+    Boolean createCourse(Course course);
+    Boolean selectCourse(SC sc);
+    List<Course> findAllCourse();
 }

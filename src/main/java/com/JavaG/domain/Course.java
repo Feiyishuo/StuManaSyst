@@ -12,6 +12,15 @@ public class Course implements Serializable {
     private String time;//上课时间
     private String place;//上课地点
     private Teacher teacher;//教师Id
+    private Integer teacherId;
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
+    }
 
     public Teacher getTeacher() {
         return teacher;

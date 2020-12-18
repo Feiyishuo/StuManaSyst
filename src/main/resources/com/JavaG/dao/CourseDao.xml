@@ -47,4 +47,28 @@
         sId=#{sId}
           AND cId=#{cId}
     </delete>
+    <insert id="createCourse" parameterType="com.JavaG.domain.Course">
+        INSERT
+        into course(name,credit,period,status,time,place,teacherId)
+        VALUES(#{name},#{credit},#{period},#{status},#{time},#{place},#{teacherId})
+    </insert>
+   <insert id="selectCourse" parameterType="com.JavaG.domain.SC">
+       insert
+       into sc(sId,cId)
+       values (#{sId},#{cId})
+   </insert>
+    <select id="findAllCourse" resultMap="CourseTeacherMap">
+        SELECT
+            c.id as id,
+            c.name as name,
+            c.credit as credit,
+            c.status as status,
+            c.period as period,
+            c.time as time,
+            c.place as place,
+            t.id as tid,
+            t.name as teacherName
+        FROM course c,teacher t
+        WHERE c.teacherId=t.id
+    </select>
 </mapper>

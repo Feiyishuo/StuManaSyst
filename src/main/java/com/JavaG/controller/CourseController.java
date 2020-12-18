@@ -38,15 +38,31 @@ public class CourseController {
     @RequestMapping(value = "/deleteStudentCourse",method = RequestMethod.POST)
     public Boolean deleteStudentCourse(@RequestBody SC sc){
         // 调用service的方法
-
         int sId=sc.getsId();
         int cId=sc.getcId();
-
         Boolean isSuccessed = courseService.deleteStudentCourse(sc);
         return isSuccessed;
+    }
+    @RequestMapping(value = "/createCourse",method = RequestMethod.POST)
+    public Boolean createCourse(@RequestBody Course course){
+        // 调用service的方法
 
+        Boolean isSuccessed = courseService.createCourse(course);
+        return isSuccessed;
+    }
+    @RequestMapping(value = "/selectCourse",method = RequestMethod.POST)
+    public Boolean selectCourse(@RequestBody SC sc){
+        // 调用service的方法
 
+        Boolean isSuccessed = courseService.selectCourse(sc);
+        return isSuccessed;
+    }
+    @RequestMapping(value = "/findAllCourse",method = RequestMethod.GET)
+    public List<Course> findAllCourse(){
+        // 调用service的方法
 
+        List<Course> list = courseService.findAllCourse();
+        return list;
     }
 
 }

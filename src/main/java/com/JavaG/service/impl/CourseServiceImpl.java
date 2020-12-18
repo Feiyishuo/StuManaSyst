@@ -22,4 +22,19 @@ public class CourseServiceImpl implements CourseService {
     public Boolean deleteStudentCourse(SC sc) {
         return courseDao.deleteStudentCourse(sc);
     }
+
+    @Override
+    public Boolean createCourse(Course course) {
+        return courseDao.createCourse(course);
+    }
+
+    @Override
+    public Boolean selectCourse(SC sc) {
+        return courseDao.selectCourse(sc);
+    }
+
+    @Override
+    public List<Course> findAllCourse() {
+        return courseDao.findAllCourse();
+    }
 }
