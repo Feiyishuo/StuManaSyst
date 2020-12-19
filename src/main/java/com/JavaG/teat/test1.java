@@ -1,6 +1,8 @@
 package com.JavaG.teat;
 
+import com.JavaG.dao.AcademyDao;
 import com.JavaG.dao.StudentDao;
+import com.JavaG.domain.Academy;
 import com.JavaG.domain.Student;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -11,14 +13,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import  java.io.InputStream;
+import java.util.List;
 
 public class
 
-test {
+test1 {
     private InputStream in;
     private SqlSessionFactory factory;
     private SqlSession session;
-    private StudentDao studentDao;
+    private AcademyDao studentDao;
     @Before
     public void init() throws Exception{
         //1.读取配置文件
@@ -28,7 +31,7 @@ test {
         //3.使用工厂生产SqlSession对象
         session = factory.openSession();
         //4.使用SqlSession创建Dao接口的代理对象;
-        studentDao = session.getMapper(StudentDao.class);
+        studentDao = session.getMapper(AcademyDao.class);
     }
     @After
     public void destory() throws Exception{
@@ -42,10 +45,11 @@ test {
     @Test
     public void findAllTest(){
         //5.使用代理对象执行方法
-        Integer id = 1111110334;
-        Student student=studentDao.findStudentDetailsById(id);
-        System.out.println(student);
-
+        List<Academy> academies=studentDao.findAllAcademies();
+        for(Academy academy:academies){
+            System.out.println(academy);
         }
 
     }
+
+}
