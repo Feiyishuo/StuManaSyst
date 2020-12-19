@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
         return userDao.getUser(user.getUsername(),user.getPassword());
     }
 
+    //检测是否存在
     public boolean checkUserIsExist(String username) {
         User result = userDao.getUserByName(username);
         if (result == null) {
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
         userDao.updatePass(username, newPass);
     }
 
-
+    //获得所有学生用户
     public ArrayList<Student> getAllUsers() {
         return userDao.getAllUsers();
     }

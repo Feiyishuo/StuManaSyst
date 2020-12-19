@@ -7,7 +7,7 @@ public class User {
     private String username;
     private String password;
     private int type=1;
-    private int status;
+    private int status;//用户状态
 
     public int getId() {
         return id;

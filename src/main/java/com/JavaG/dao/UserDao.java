@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
-//与数据库交互，表user_login
+//与数据库交互，表user_login，
 @Repository
 public interface UserDao {
 

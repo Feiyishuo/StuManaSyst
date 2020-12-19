@@ -81,7 +81,7 @@ public class UserController {
         return new Response().success(users);
     }
 
-    //禁用Users
+    //禁用Users，改变状态status
     @RequestMapping("/api/enableUser")
     public Response enableUser(HttpServletRequest request, HttpSession session){
         //启用用户

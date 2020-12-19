@@ -13,8 +13,8 @@ public interface UserService {
     User login(User user);
     User getUser(String username);
     void updatePass(String username,String newPass);
-    void enableUser(int id);
-    void disableUser(int id);
+    void enableUser(int id);//启用
+    void disableUser(int id);//禁用
     ArrayList<Student> getAllUsers();
 
 }

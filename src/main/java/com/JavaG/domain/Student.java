@@ -18,7 +18,7 @@ public class Student implements Serializable {
     private String phoneNum;//电话号码
     private Integer grade;//年级
     private String nativePlace;//籍贯
-    private int status=1;//状态
+    private int status=1;//学生状态
     private Major major;
     private Academy academy;
     private Integer majorId;
