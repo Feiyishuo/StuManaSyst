@@ -1,7 +1,10 @@
 package com.JavaG.service;
 
+import com.JavaG.domain.Student;
 import com.JavaG.domain.User;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 //使用者登录，修改密码等
 
@@ -10,5 +13,8 @@ public interface UserService {
     User login(User user);
     User getUser(String username);
     void updatePass(String username,String newPass);
+    void enableUser(int id);
+    void disableUser(int id);
+    ArrayList<Student> getAllUsers();
 
 }

@@ -2,6 +2,7 @@ package com.JavaG.controller;
 
 
 import com.JavaG.dao.UserDao;
+import com.JavaG.domain.Student;
 import com.JavaG.domain.User;
 import com.JavaG.service.UserService;
 
@@ -41,7 +42,7 @@ public class UserController {
                 session.setAttribute("USER_SESSION",result);
                 return new Response().success();
             }else {
-                return new Response().failure("账号异常");
+                return new Response().failure("账号被禁用");
             }
 
         }
@@ -67,11 +68,40 @@ public class UserController {
     //退出登录
     @RequestMapping(value = "/api/logout",method = RequestMethod.GET)
     public Response logout(HttpSession session){
-       
+
         session.removeAttribute("USER_SESSION");
         return new Response().success();
     }
 
+    //获得所有Users
+    @RequestMapping("/api/getAllUsers")
+    public Response getAllUsers (HttpServletRequest request, HttpSession session){
+
+        ArrayList<Student> users=userService.getAllUsers();
+        return new Response().success(users);
+    }
+
+    //禁用Users
+    @RequestMapping("/api/enableUser")
+    public Response enableUser(HttpServletRequest request, HttpSession session){
+        //启用用户
+        User user =(User) session.getAttribute("USER_SESSION");
+        String id=request.getParameter("id");
+        userService.enableUser(Integer.parseInt(id));
+        return new Response().success();
+
+    }
+
+    //启用Users
+    @RequestMapping("/api/disableUser")
+    public Response disableUser(HttpServletRequest request, HttpSession session){
+        //禁用用户
+        User user =(User) session.getAttribute("USER_SESSION");
+        String id=request.getParameter("id");
+
+        userService.disableUser(Integer.parseInt(id));
+        return new Response().success();
+    }
 
 
 }
