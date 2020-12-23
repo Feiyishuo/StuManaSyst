@@ -7,7 +7,7 @@ public class User {
     private String username;
     private String password;
     private int type=1;
-    private int status=1;
+    private int status;//用户状态
 
     public int getId() {
         return id;
@@ -47,6 +47,17 @@ public class User {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", type=" + type +
+                ", status=" + status +
+                '}';
     }
 }
 

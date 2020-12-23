@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.JavaG.dao.UserDao">
-    <select id="getUser" parameterType="String"  resultType="com.JavaG.domain.User" >
-    select * from user_login where username = #{username} and password=#{password} and status=1
+    <select id="getUser"  resultType="com.JavaG.domain.User" >
+    select * from user_login where username = #{username}
     </select>
     <select id="getUserByName" parameterType="String"  resultType="com.JavaG.domain.User" >
     select * from user_login where username = #{username}

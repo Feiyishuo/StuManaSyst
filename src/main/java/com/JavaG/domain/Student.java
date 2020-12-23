@@ -18,6 +18,7 @@ public class Student implements Serializable {
     private String phoneNum;//电话号码
     private Integer grade;//年级
     private String nativePlace;//籍贯
+    private int status=1;//学生状态
     private Major major;
     private Academy academy;
     private Integer majorId;
@@ -127,7 +128,13 @@ public class Student implements Serializable {
         this.grade = grade;
     }
 
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getNativePlace() {
         return nativePlace;
@@ -136,6 +143,7 @@ public class Student implements Serializable {
     public void setNativePlace(String nativePlace) {
         this.nativePlace = nativePlace;
     }
+
 
     @Override
     public String toString() {

@@ -2,14 +2,12 @@ package com.JavaG.controller;
 
 
 import com.JavaG.dao.UserDao;
+import com.JavaG.domain.Student;
 import com.JavaG.domain.User;
 import com.JavaG.service.UserService;
 
 
 import com.JavaG.tool.Response;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
-import javax.servlet.http.HttpSession;
-//User控制类
 @RestController
 public class UserController {
 
@@ -29,23 +25,31 @@ public class UserController {
     @Resource
     private UserDao userDao;
     //登录
-    @RequestMapping(value = "/api/login",method = RequestMethod.POST)
-    public Response login(@RequestBody User user, HttpSession session){
-        if(user==null){
-            return new Response().failure("用户为空");
-        }
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping(value = "/api/login")
+    public User login(HttpServletRequest request){
+        //获取用户的帐号，新建一个Use对象，以这个对象查询数据库中是否存在该用户
+        String username = request.getParameter("username");
+        User user = new User();
+        user.setUsername(username);
+
         User result =userService.login(user);
         //登陆成功
         if(result!=null){
-            if(result.getStatus()==1){//检测账号状态
-                session.setAttribute("USER_SESSION",result);
-                return new Response().success();
-            }else {
-                return new Response().failure("账号异常");
-            }
+            System.out.println("查询用户成功");
+            //获取用户提交的参数
+            String sid = request.getParameter("username");
+            //获取Session对象
+            HttpSession session = request.getSession();
+            //向session域中写入数据
+            session.setAttribute("sid",sid);
 
+            return result;
         }
-        return new Response().failure("账号或密码错误");
+        else System.out.println("用户不存在");
+
+        return null;
     }
 
     //修改密码
@@ -67,11 +71,43 @@ public class UserController {
     //退出登录
     @RequestMapping(value = "/api/logout",method = RequestMethod.GET)
     public Response logout(HttpSession session){
-       
-        session.removeAttribute("USER_SESSION");
+
+        session.removeAttribute("sid");
+        System.out.println("退出系统");
+
+
         return new Response().success();
     }
 
+    //获得所有Users
+    @RequestMapping("/api/getAllUsers")
+    public Response getAllUsers (HttpServletRequest request, HttpSession session){
+
+        ArrayList<Student> users=userService.getAllUsers();
+        return new Response().success(users);
+    }
+
+    //禁用Users，改变状态status
+    @RequestMapping("/api/enableUser")
+    public Response enableUser(HttpServletRequest request, HttpSession session){
+        //启用用户
+        User user =(User) session.getAttribute("USER_SESSION");
+        String id=request.getParameter("id");
+        userService.enableUser(Integer.parseInt(id));
+        return new Response().success();
+
+    }
+
+    //启用Users
+    @RequestMapping("/api/disableUser")
+    public Response disableUser(HttpServletRequest request, HttpSession session){
+        //禁用用户
+        User user =(User) session.getAttribute("USER_SESSION");
+        String id=request.getParameter("id");
+
+        userService.disableUser(Integer.parseInt(id));
+        return new Response().success();
+    }
 
 
 }
