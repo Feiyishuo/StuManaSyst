@@ -11,23 +11,23 @@ public interface StudentInfoService {
      * 查找所有
      * @return
      */
-    public List<Student> findAll();
+    List<Student> findAll();
 
 
     /**
      * 根据专业id获取学生信息
-     * @param majorId
+     * @param majorName
      * @return
      */
-    List<Student> findStudentByMajorId(Integer majorId);
+    List<Student> findStudentByMajorName(String majorName);
 
 
     /**
      * 根据学院id获取学生信息
-     * @param academyId
+     * @param academyName
      * @return
      */
-    List<Student> findStudentByAcademyId(Integer academyId);
+    List<Student> findStudentByAcademyName(String academyName);
 
 
 
@@ -41,6 +41,14 @@ public interface StudentInfoService {
 
 
     /**
+     * 根据id获取学生信息
+     * @param id
+     * @return
+     */
+    List<Student> findStudentById(Integer id);
+
+
+    /**
      * 单条插入学生信息
      * @param student
      * @return
@@ -51,9 +59,9 @@ public interface StudentInfoService {
 
     /**
      * 根据id来删除学生信息
-     * @param id
+     * @param student
      */
-    Boolean deleteStudentInfo(Integer id);
+    Boolean deleteStudentInfo(Student student);
 
 
 
@@ -61,5 +69,5 @@ public interface StudentInfoService {
      * 更新学生信息
      * @param student
      */
-    int updateStudentInfo(Student student);
+    Boolean updateStudentInfo(Student student);
 }

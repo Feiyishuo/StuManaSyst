@@ -53,6 +53,29 @@
         and s.academyId=a.id
         and s.id=#{id}
     </select>
+    <select id="findStudentById" parameterType="int" resultMap="studentMajorAcademyMap">
+        select
+        s.id as id,
+        s.name as name,
+        s.sex as sex,
+        s.nation as nation,
+        s.politicsStatus as politicsStatus,
+        s.idCard as idCard,
+        s.birth as birth,
+        s.phoneNum as phoneNum,
+        s.grade as grade,
+        s.nativePlace as nativePlace,
+        s.majorId as majorId,
+        s.academyId as academyId,
+        m.id as mid,
+        m.name as majorName,
+        a.id as aid,
+        a.name as academyName
+        from major m ,student s, academy a
+        where s.majorId=m.id
+        and s.academyId=a.id
+        and s.id=#{id}
+    </select>
 
     <insert id="insertOneStudentInfo" parameterType="com.JavaG.domain.Student">
         insert
@@ -60,7 +83,96 @@
         values(#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},#{phoneNum},#{birth},#{nativePlace},#{grade})
     </insert>
 
-<!--    <select id="findAll" resultType="com.JavaG.domain.Student">-->
-<!--        select * from student-->
-<!--    </select>-->
+    <select id="findAll" resultMap="studentMajorAcademyMap">
+        select
+        s.id as id,
+        s.name as name,
+        s.sex as sex,
+        s.nation as nation,
+        s.politicsStatus as politicsStatus,
+        s.idCard as idCard,
+        s.birth as birth,
+        s.phoneNum as phoneNum,
+        s.grade as grade,
+        s.nativePlace as nativePlace,
+        s.majorId as majorId,
+        s.academyId as academyId,
+        m.id as mid,
+        m.name as majorName,
+        a.id as aid,
+        a.name as academyName
+        from major m ,student s, academy a
+        where s.majorId=m.id
+        and s.academyId=a.id
+    </select>
+    <select id="findStudentByAcademyName" parameterType="String" resultMap="studentMajorAcademyMap">
+        select
+        s.id as id,
+        s.name as name,
+        s.sex as sex,
+        s.nation as nation,
+        s.politicsStatus as politicsStatus,
+        s.idCard as idCard,
+        s.birth as birth,
+        s.phoneNum as phoneNum,
+        s.grade as grade,
+        s.nativePlace as nativePlace,
+        s.majorId as majorId,
+        s.academyId as academyId,
+        m.id as mid,
+        m.name as majorName,
+        a.id as aid,
+        a.name as academyName
+        from major m ,student s, academy a
+        where s.majorId=m.id
+        and s.academyId=a.id
+        and a.name=#{academyName}
+    </select>
+    <select id="findStudentByMajorName" parameterType="String" resultMap="studentMajorAcademyMap">
+        select
+        s.id as id,
+        s.name as name,
+        s.sex as sex,
+        s.nation as nation,
+        s.politicsStatus as politicsStatus,
+        s.idCard as idCard,
+        s.birth as birth,
+        s.phoneNum as phoneNum,
+        s.grade as grade,
+        s.nativePlace as nativePlace,
+        s.majorId as majorId,
+        s.academyId as academyId,
+        m.id as mid,
+        m.name as majorName,
+        a.id as aid,
+        a.name as academyName
+        from major m ,student s, academy a
+        where s.majorId=m.id
+        and s.academyId=a.id
+        and m.name=#{majorName}
+    </select>
+
+    <delete id="deleteStudentInfo" parameterType="int">
+        delete
+        from student
+        where id=#{id};
+    </delete>
+
+    <update id="updateStudentInfo" parameterType="com.JavaG.domain.Student">
+        update
+        student
+        set
+        name = #{name},
+        sex = #{sex},
+        nation = #{nation},
+        politicsStatus = #{politicsStatus},
+        idCard = #{idCard},
+        majorId = #{majorId},
+        academyId = #{academyId},
+        phoneNum = #{phoneNum},
+        birth = #{birth},
+        grade =#{grade},
+        nativePlace=#{nativePlace}
+        where id = #{id}
+    </update>
 </mapper>

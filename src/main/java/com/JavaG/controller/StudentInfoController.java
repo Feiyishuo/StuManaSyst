@@ -5,6 +5,7 @@ import com.JavaG.domain.Account;
 import com.JavaG.domain.Student;
 import com.JavaG.service.StudentInfoService;
 import com.JavaG.service.impl.StudentInfoServiceImpl;
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.ibatis.annotations.Param;
 import org.json.JSONObject;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 
 @RestController
 @RequestMapping(value = "/api/studentInfo",produces = {"application/json;charset=UTF-8"})
@@ -31,37 +33,48 @@ public class StudentInfoController {
      * 查找所有
      * @return
      */
-    @RequestMapping("/findAll")
+    @RequestMapping(value = "/findAll",method = {RequestMethod.POST})
     public List<Student> findAll(){
         System.out.println("表现层：查询所有学生...");
-        List<Student> list = studentInfoService.findAll();
-        for(Student student:list){
+        List<Student> students = studentInfoService.findAll();
+        for(Student student:students){
             System.out.println(student);
         }
-        return list;
+        return students;
     }
 
 
     /**
      * 根据专业id获取学生信息
-     * @param majorId
+     * @param majorName
      * @return
      */
-    @RequestMapping(value = "/findStudentByMajorId",method = {RequestMethod.GET})
-    public @ResponseBody List<Student> findStudentByMajorId(@RequestParam Integer majorId){
+    @RequestMapping(value = "/findStudentByMajorName",method = {RequestMethod.POST})
+    public List<Student> findStudentByMajorName(@RequestBody String majorName){
 
-        return studentInfoService.findStudentByMajorId(majorId);
+
+        JSONObject jsonObj = new JSONObject(majorName);
+
+        System.out.println(jsonObj.get("majorName"));
+        String name=jsonObj.get("majorName").toString();
+
+        return studentInfoService.findStudentByMajorName(name);
     }
 
 
     /**
      * 根据学院id获取学生信息
-     * @param academyId
+     * @param academyName
      * @return
      */
-    @RequestMapping(value = "/findStudentByAcademyId",method = {RequestMethod.GET})
-    public @ResponseBody List<Student> findStudentByAcademyId(@RequestParam Integer academyId){
-        return studentInfoService.findStudentByAcademyId(academyId);
+    @RequestMapping(value = "/findStudentByAcademyName",method = {RequestMethod.POST})
+    public List<Student> findStudentByAcademyName(@RequestBody String academyName){
+        System.out.println(academyName);
+        JSONObject jsonObj = new JSONObject(academyName);
+
+        System.out.println(jsonObj.get("academyName"));
+        String name=jsonObj.get("academyName").toString();
+        return studentInfoService.findStudentByAcademyName(name);
     }
 
 
@@ -85,6 +98,13 @@ public class StudentInfoController {
         return stu;
     }
 
+    @RequestMapping(value = "/findStudentById",method = {RequestMethod.POST})
+    public List<Student> findStudentById(@RequestBody Student student){
+        Integer id=student.getId();
+        List<Student> stu=studentInfoService.findStudentById(id);
+        return stu;
+    }
+
 
     /**
      * 单条插入学生信息
@@ -96,13 +116,7 @@ public class StudentInfoController {
 
         return studentInfoService.insertOneStudentInfo(student);
 
-//        HashMap<String, Integer> map = new HashMap<>();
-//        if(count == 1){
-//            map.put("code",1);
-//        }else{
-//            map.put("code",0);
-//        }
-//        response.getWriter().write(new ObjectMapper().writeValueAsString(map));
+
 
 
     }
@@ -114,15 +128,8 @@ public class StudentInfoController {
      * @param student
      */
     @RequestMapping(value = "/deleteStudentInfo",method = {RequestMethod.POST})
-    public void deleteStudentInfo(@RequestBody Student student, HttpServletResponse response) throws IOException{
-        Boolean count = studentInfoService.deleteStudentInfo(student.getId());
-        HashMap<String, Integer> map = new HashMap<>();
-        if(count){
-            map.put("code",1);
-        }else{
-            map.put("code",0);
-        }
-        response.getWriter().write(new ObjectMapper().writeValueAsString(map));
+    public Boolean deleteStudentInfo(@RequestBody Student student){
+        return studentInfoService.deleteStudentInfo(student);
 
     }
 
@@ -133,16 +140,10 @@ public class StudentInfoController {
      * @param student
      */
     @RequestMapping(value = "/updateStudentInfo",method = {RequestMethod.POST})
-    public void updateStudentInfo(@RequestBody Student student, HttpServletResponse response) throws IOException{
+    public Boolean updateStudentInfo(@RequestBody Student student){
 
-        int count = studentInfoService.updateStudentInfo(student);
-        HashMap<String, Integer> map = new HashMap<>();
-        if(count == 1){
-            map.put("code",1);
-        }else{
-            map.put("code",0);
-        }
-        response.getWriter().write(new ObjectMapper().writeValueAsString(map));
+        return studentInfoService.updateStudentInfo(student);
+
     }
 
 }

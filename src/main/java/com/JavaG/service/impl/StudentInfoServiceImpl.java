@@ -16,6 +16,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     private StudentDao studentDao;
 
 
+    @Override
     public List<Student> findAll() {
 
         System.out.println("业务层：查询所有学生1...");
@@ -23,19 +24,25 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     @Override
-    public List<Student> findStudentByMajorId(Integer majorId) {
-        return studentDao.findStudentByMajorId(majorId);
+    public List<Student> findStudentByMajorName(String majorName) {
+
+        return studentDao.findStudentByMajorName(majorName);
     }
 
     @Override
-    public List<Student> findStudentByAcademyId(Integer academyId) {
-        return studentDao.findStudentByAcademyId(academyId);
+    public List<Student> findStudentByAcademyName(String academyName) {
+        return studentDao.findStudentByAcademyName(academyName);
     }
 
     @Override
     public Student findStudentDetailsById(Integer id) {
         System.out.println("studentInfoImpl");
         return studentDao.findStudentDetailsById(id);
+    }
+
+    @Override
+    public List<Student> findStudentById(Integer id) {
+        return studentDao.findStudentById(id);
     }
 
     @Override
@@ -51,20 +58,24 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     @Override
-    public Boolean deleteStudentInfo(Integer id) {
-        return studentDao.deleteStudentInfo(id);
+    public Boolean deleteStudentInfo(Student student) {
+
+        if(studentDao.findStudentDetailsById(student.getId())!=null){
+            return studentDao.deleteStudentInfo(student);
+        }
+        return false;
     }
 
 
 
 
     @Override
-    public int updateStudentInfo(Student student) {
+    public Boolean updateStudentInfo(Student student) {
 
         if(studentDao.findStudentDetailsById(student.getId())!=null){
             return studentDao.updateStudentInfo(student);
         }
-        return 0;
+        return false;
 
     }
 }
