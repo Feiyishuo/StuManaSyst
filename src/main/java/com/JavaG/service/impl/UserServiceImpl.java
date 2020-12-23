@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 //实现UserService
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
     public User login(User user){
-        return userDao.getUser(user.getUsername(),user.getPassword());
+        return userDao.getUser(user);
     }
 
     //检测是否存在

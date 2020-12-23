@@ -14,8 +14,6 @@
         <result property="birth" column="birth"></result>
         <result property="phoneNum" column="phoneNum"></result>
         <result property="grade" column="grade"></result>
-        <result property="majorId" column="majorId"></result>
-        <result property="academyId" column="academyId"></result>
         <result property="nativePlace" column="nativePlace" jdbcType="VARCHAR"></result>
 
         <!--一对一的关系映射，封装配置major的内容-->
@@ -30,7 +28,7 @@
         </association>
 
     </resultMap>
-    <select id="findStudentDetailsById" parameterType="int" resultMap="studentMajorAcademyMap">
+    <select id="findStudentDetailsById" parameterType="String" resultMap="studentMajorAcademyMap">
         select
         s.id as id,
         s.name as name,
@@ -42,8 +40,6 @@
         s.phoneNum as phoneNum,
         s.grade as grade,
         s.nativePlace as nativePlace,
-        s.majorId as majorId,
-        s.academyId as academyId,
         m.id as mid,
         m.name as majorName,
         a.id as aid,
@@ -54,11 +50,6 @@
         and s.id=#{id}
     </select>
 
-    <insert id="insertOneStudentInfo" parameterType="com.JavaG.domain.Student">
-        insert
-        into student(name,sex,nation,politicsStatus,idCard,majorId,academyId,phoneNum,birth,nativePlace,grade)
-        values(#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},#{phoneNum},#{birth},#{nativePlace},#{grade})
-    </insert>
 
 <!--    <select id="findAll" resultType="com.JavaG.domain.Student">-->
 <!--        select * from student-->

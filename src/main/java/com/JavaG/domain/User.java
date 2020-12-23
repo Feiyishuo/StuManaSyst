@@ -48,5 +48,16 @@ public class User {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", type=" + type +
+                ", status=" + status +
+                '}';
+    }
 }
 

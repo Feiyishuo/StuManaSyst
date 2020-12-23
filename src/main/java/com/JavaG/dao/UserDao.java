@@ -11,9 +11,13 @@ import java.util.ArrayList;
 @Repository
 public interface UserDao {
 
-    //根据用户名和密码查询单个
+/*    //根据用户名和密码查询单个
     //@Select("select * from user_login where username = #{username} and password = #{password} ")
-    User getUser(@Param("username") String username, @Param("password")String password);
+    User getUser(@Param("username") String username, @Param("password")String password);*/
+
+
+    User getUser(User user);
+
 
     //根据用户名修改用户密码
     //@Update("update user_login set password = #{newPass} where username = #{username}")

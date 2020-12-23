@@ -210,6 +210,13 @@
       <version>RELEASE</version>
       <scope>compile</scope>
     </dependency>
+
+    <!--用于将对象转为json数据-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.73</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -247,5 +254,16 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <resources>
+      <resource>
+        <directory>src/main/java</directory><!--所在的目录-->
+        <includes><!--包括java录下的.properties,.xml文件都会扫描到-->
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
   </build>
 </project>
