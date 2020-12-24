@@ -9,10 +9,10 @@ import java.util.ArrayList;
 //使用者登录，修改密码等
 
 public interface UserService {
-    boolean checkUserIsExist(String username);
+    boolean checkUserIsExist(int id);
     User login(User user);
-    User getUser(String username);
-    void updatePass(String username,String newPass);
+    User getUser(int id);
+    void updatePass(int id,String newPass);
     void enableUser(int id);//启用
     void disableUser(int id);//禁用
     ArrayList<Student> getAllUsers();

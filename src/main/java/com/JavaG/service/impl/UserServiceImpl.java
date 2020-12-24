@@ -22,21 +22,21 @@ public class UserServiceImpl implements UserService {
     }
 
     //检测是否存在
-    public boolean checkUserIsExist(String username) {
-        User result = userDao.getUserByName(username);
+    public boolean checkUserIsExist(int id) {
+        User result = userDao.getUserById(id);
         if (result == null) {
             return false;
         }
         return true;
     }
 
-    public User getUser(String username) {
-        return userDao.getUserByName(username);
+    public User getUser(int id) {
+        return userDao.getUserById(id);
     }
 
 
-    public void updatePass(String username, String newPass) {
-        userDao.updatePass(username, newPass);
+    public void updatePass(int id, String newPass) {
+        userDao.updatePass(id, newPass);
     }
 
     //获得所有学生用户

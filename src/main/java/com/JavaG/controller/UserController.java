@@ -29,21 +29,22 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/api/login")
     public User login(HttpServletRequest request){
-        //获取用户的帐号，新建一个Use对象，以这个对象查询数据库中是否存在该用户
-        String username = request.getParameter("username");
+        //获取用户的帐号，新建一个User对象，以这个对象查询数据库中是否存在该用户
+        String id = request.getParameter("id");
         User user = new User();
-        user.setUsername(username);
-
+        user.setId(Integer.parseInt(id));
         User result =userService.login(user);
         //登陆成功
         if(result!=null){
+
             System.out.println("查询用户成功");
             //获取用户提交的参数
-            String sid = request.getParameter("username");
+            //String sid = request.getParameter("id");
             //获取Session对象
             HttpSession session = request.getSession();
+
             //向session域中写入数据
-            session.setAttribute("sid",sid);
+            session.setAttribute("sid",result);
 
             return result;
         }
@@ -56,17 +57,18 @@ public class UserController {
     @RequestMapping(value = "/api/updatePass",method = RequestMethod.POST)
     public Response updatePass(@RequestBody Map<String, String> map, HttpSession session){
 
-        User Pwduser = userDao.getUserByName(map.get("username"));
-        if(!userService.checkUserIsExist(map.get("username"))){
+        //登陆成功
+        User user=(User)session.getAttribute("sid");
+        if(!userService.checkUserIsExist(user.getId())){
             return new Response().failure("该用户不存在！");
-        }
-        else if(!Pwduser.getPassword().equals(map.get("oldPass"))){
+        } else if (!user.getPassword().equals(map.get("oldPass"))){
             return new Response().failure("请输入正确的原密码");
         }else{
-            userService.updatePass(Pwduser.getUsername(),map.get("newPass"));
+            userService.updatePass(user.getId(),map.get("newPass"));
             return new Response().success();
         }
     }
+
 
     //退出登录
     @RequestMapping(value = "/api/logout",method = RequestMethod.GET)
