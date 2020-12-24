@@ -15,6 +15,7 @@ public interface UserService {
     void updatePass(int id,String newPass);
     void enableUser(int id);//启用
     void disableUser(int id);//禁用
+
     ArrayList<Student> getAllUsers();
 
 }

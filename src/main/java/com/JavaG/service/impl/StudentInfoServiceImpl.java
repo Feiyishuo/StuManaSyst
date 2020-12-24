@@ -1,7 +1,9 @@
 package com.JavaG.service.impl;
 
 import com.JavaG.dao.StudentDao;
+import com.JavaG.dao.UserDao;
 import com.JavaG.domain.Student;
+import com.JavaG.domain.User;
 import com.JavaG.service.StudentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 
     @Resource
     private StudentDao studentDao;
+    @Resource
+    private UserDao userDao;
 
 
     @Override
@@ -49,7 +53,29 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     public Boolean insertOneStudentInfo(Student student) {
 
         if (student.getName()!=null) {
-           return studentDao.insertOneStudentInfo(student);
+           Boolean isTrue= studentDao.insertOneStudentInfo(student);
+            String idCard=student.getIdCard();
+            Integer id=studentDao.findStudentByidCard(idCard);
+            String username=student.getName();
+            User user =new User();
+            user.setId(id);
+            user.setPassword("123456");
+            user.setStatus(1);
+            user.setType(1);
+            user.setUsername(username);
+            Boolean isSuccessed= userDao.insertUser(user);
+            if(isTrue && isSuccessed)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+
+
+
+
         }
         else {
             return false;
@@ -66,7 +92,10 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         return false;
     }
 
-
+    @Override
+    public Integer findStudentByidCard(String idCard) {
+        return studentDao.findStudentByidCard(idCard);
+    }
 
 
     @Override

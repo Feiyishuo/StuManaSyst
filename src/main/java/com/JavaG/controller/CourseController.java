@@ -38,8 +38,7 @@ public class CourseController {
     @RequestMapping(value = "/deleteStudentCourse",method = RequestMethod.POST)
     public Boolean deleteStudentCourse(@RequestBody SC sc){
         // 调用service的方法
-        int sId=sc.getsId();
-        int cId=sc.getcId();
+
         Boolean isSuccessed = courseService.deleteStudentCourse(sc);
         return isSuccessed;
     }

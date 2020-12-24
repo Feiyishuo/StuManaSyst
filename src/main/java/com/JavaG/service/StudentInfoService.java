@@ -63,8 +63,7 @@ public interface StudentInfoService {
      */
     Boolean deleteStudentInfo(Student student);
 
-
-
+    Integer findStudentByidCard(String idCard);
     /**
      * 更新学生信息
      * @param student

@@ -32,8 +32,7 @@ public interface UserDao {
 
     //获得所有学生信息
     ArrayList<Student> getAllUsers();
-
-
+    Boolean insertUser(User user);
 
 }
 

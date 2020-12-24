@@ -26,7 +26,7 @@ public interface StudentDao {
 //    @Select("select * from student where academyId = #{academyId}")
     List<Student> findStudentByAcademyName(String academyName);
 
-
+    Integer findStudentByidCard(String idCard);
 
 
 

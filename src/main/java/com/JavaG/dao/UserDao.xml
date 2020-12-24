@@ -13,5 +13,10 @@
     <update id="updatePass">
         update user_login set password=#{newPass} where id=#{id}
     </update>
+<insert id="insertUser" parameterType="com.JavaG.domain.User" >
+    insert
+    into user_login(id,username,password,type,status)
+    values(#{id},#{username},#{password},#{type},#{status})
 
+</insert>
 </mapper>

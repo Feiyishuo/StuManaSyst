@@ -14,6 +14,8 @@
         <result property="birth" column="birth"></result>
         <result property="phoneNum" column="phoneNum"></result>
         <result property="grade" column="grade"></result>
+        <result property="majorId" column="majorId"></result>
+        <result property="academyId" column="academyId"></result>
         <result property="nativePlace" column="nativePlace" jdbcType="VARCHAR"></result>
 
         <!--一对一的关系映射，封装配置major的内容-->
@@ -28,7 +30,7 @@
         </association>
 
     </resultMap>
-    <select id="findStudentDetailsById" parameterType="String" resultMap="studentMajorAcademyMap">
+    <select id="findStudentDetailsById" parameterType="Integer" resultMap="studentMajorAcademyMap">
         select
         s.id as id,
         s.name as name,
@@ -148,7 +150,11 @@
         from student
         where id=#{id};
     </delete>
-
+<select id="findStudentByidCard" parameterType="String" resultType="Integer">
+    select id
+    from student s
+    where s.idCard=#{idCard}
+</select>
     <update id="updateStudentInfo" parameterType="com.JavaG.domain.Student">
         update
         student
@@ -166,4 +172,9 @@
         nativePlace=#{nativePlace}
         where id = #{id}
     </update>
+    <insert id="insertOneStudentInfo" parameterType="com.JavaG.domain.Student">
+        insert
+        into student(name,sex,nation,politicsStatus,idCard,majorId,academyId,phoneNum,birth,nativePlace,grade)
+        values(#{name},#{sex},#{nation},#{politicsStatus},#{idCard},#{majorId},#{academyId},#{phoneNum},#{birth},#{nativePlace},#{grade})
+    </insert>
 </mapper>

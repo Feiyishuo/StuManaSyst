@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Teacher implements Serializable {
 
-    private String id;//职工号
+    private Integer id;//职工号
     private String name;//姓名
     private String sex;//性别
     private String nation;//民族
