@@ -19,4 +19,10 @@
     values(#{id},#{username},#{password},#{type},#{status})
 
 </insert>
+    <select id="getAllUsers" resultType="com.JavaG.domain.Student">
+        select a.*,b.username,b.status from student a,user_login b where a.id=b.id
+    </select>
+    <update id="updateUserStatus">
+       update user_login set status=#{status} where id=#{id}
+    </update>
 </mapper>
