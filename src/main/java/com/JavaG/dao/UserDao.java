@@ -21,11 +21,11 @@ public interface UserDao {
 
     //根据用户名修改用户密码
     //@Update("update user_login set password = #{newPass} where username = #{username}")
-    void updatePass(@Param("username") String username, @Param("newPass") String newPass);
+    void updatePass(@Param("id") int id, @Param("newPass") String newPass);
 
     //查找用户
-    //@Select("select * from user_login where username = #{username}")
-    User getUserByName(String username);
+    //@Select("select * from user_login where id = #{id}")
+    User getUserById(int id);
 
     //更新用户状态，0为被禁用，1为正常
     void updateUserStatus(@Param("id")int id, @Param("status")int status);

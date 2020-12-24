@@ -7,11 +7,11 @@
     <select id="getUser"  resultType="com.JavaG.domain.User" >
     select * from user_login where id = #{id}
     </select>
-    <select id="getUserByName" parameterType="String"  resultType="com.JavaG.domain.User" >
-    select * from user_login where username = #{username}
+    <select id="getUserById" parameterType="int"  resultType="com.JavaG.domain.User" >
+    select * from user_login where id = #{id}
     </select>
     <update id="updatePass">
-        update user_login set password=#{newPass} where id=#{username}
+        update user_login set password=#{newPass} where id=#{id}
     </update>
 
 </mapper>

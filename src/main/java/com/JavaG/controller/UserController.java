@@ -39,12 +39,12 @@ public class UserController {
 
             System.out.println("查询用户成功");
             //获取用户提交的参数
-            String sid = request.getParameter("id");
+            //String sid = request.getParameter("id");
             //获取Session对象
             HttpSession session = request.getSession();
 
             //向session域中写入数据
-            session.setAttribute("sid",sid);
+            session.setAttribute("sid",result);
 
             return result;
         }
@@ -57,17 +57,18 @@ public class UserController {
     @RequestMapping(value = "/api/updatePass",method = RequestMethod.POST)
     public Response updatePass(@RequestBody Map<String, String> map, HttpSession session){
 
-        User Pwduser = userDao.getUserByName(map.get("username"));
-        if(!userService.checkUserIsExist(map.get("username"))){
+        //登陆成功
+        User user=(User)session.getAttribute("sid");
+        if(!userService.checkUserIsExist(user.getId())){
             return new Response().failure("该用户不存在！");
-        }
-        else if(!Pwduser.getPassword().equals(map.get("oldPass"))){
+        } else if (!user.getPassword().equals(map.get("oldPass"))){
             return new Response().failure("请输入正确的原密码");
         }else{
-            userService.updatePass(Pwduser.getUsername(),map.get("newPass"));
+            userService.updatePass(user.getId(),map.get("newPass"));
             return new Response().success();
         }
     }
+
 
     //退出登录
     @RequestMapping(value = "/api/logout",method = RequestMethod.GET)
