@@ -5,7 +5,7 @@
 
 <mapper namespace="com.JavaG.dao.UserDao">
     <select id="getUser"  resultType="com.JavaG.domain.User" >
-    select * from user_login where username = #{username}
+    select * from user_login where id = #{id}
     </select>
     <select id="getUserByName" parameterType="String"  resultType="com.JavaG.domain.User" >
     select * from user_login where username = #{username}
