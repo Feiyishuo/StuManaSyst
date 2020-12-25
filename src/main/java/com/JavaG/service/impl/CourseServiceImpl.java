@@ -30,7 +30,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Boolean selectCourse(SC sc) {
+
         return courseDao.selectCourse(sc);
+
     }
 
     @Override

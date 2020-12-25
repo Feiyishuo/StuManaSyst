@@ -13,4 +13,5 @@ public interface CourseService {
     Boolean createCourse(Course course);
     Boolean selectCourse(SC sc);
     List<Course> findAllCourse();
+
 }
